@@ -1,7 +1,7 @@
 
-# 📊 Análise Histórica dos Números da Mega-Sena
+# 📊 Web Scraping - Histórica dos Números da Mega-Sena
 
-Este projeto tem como objetivo extrair e organizar os resultados históricos da Mega-Sena, desde 1996 até a data atual, utilizando **web scraping com BeautifulSoup** e **Pandas** para transformar os dados em um DataFrame estruturado.
+Este projeto tem como objetivo extrair os resultados históricos da Mega-Sena, desde 1996 até a data atual, utilizando **web scraping com BeautifulSoup** e **Pandas** para transformar os dados em um DataFrame estruturado.
 
 ---
 
@@ -9,7 +9,7 @@ Este projeto tem como objetivo extrair e organizar os resultados históricos da 
 
 - Coletar todos os números sorteados na Mega-Sena desde 1996.
 - Organizar os dados em um DataFrame no formato tabular.
-- Utilizar o notebook Databricks para facilitar a análise e visualização.
+- Utilizar o notebook (no Databricks) para facilitar a análise e visualização.
 
 ---
 
@@ -17,7 +17,6 @@ Este projeto tem como objetivo extrair e organizar os resultados históricos da 
 
 - Python
 - Pandas
-- NumPy
 - BeautifulSoup4
 - urllib
 - datetime
@@ -29,58 +28,59 @@ Este projeto tem como objetivo extrair e organizar os resultados históricos da 
 
 ### 🔹 1. Instalação de dependências
 
+Instale os pacotes necessários para fazer web scraping, conforme exemplo abaixo.
+
 ```python
 %pip install beautifulsoup4
 ```
-
-Instala o pacote necessário para fazer web scraping, conforme exemplo acima.
 
 ---
 
 ### 🔹 2. Importação de bibliotecas
 
+Essas são as bibliotecas utilizadas para manipulação de dados, requisição HTTP e parsing do HTML.
+
 ```python
 import pandas as pd
-import numpy as np
 from bs4 import BeautifulSoup
 from urllib.request import urlopen, Request
 from datetime import date
 ```
 
-Bibliotecas utilizadas para manipulação de dados, requisição HTTP e parsing do HTML.
-
 ---
 
 ### 🔹 3. Definição da URL e parâmetros
 
+Define o endereço base (URL) para scraping e o intervalo de tempo (de 1996 até o ano atual).
+
 ```python
 url = 'https://asloterias.com.br/resultados-da-mega-sena-'
-ano = 1996
-data = date.today().year
+start_year = 1996
+end_year = date.today().year
 ```
-
-Define o endereço base para scraping e o intervalo de anos (de 1996 até o ano atual).
 
 ---
 
 ### 🔹 4. Extração dos dados com web scraping
 
+Faz o scraping anual dos resultados da Mega-Sena e armazena os elementos HTML que contêm os números sorteados.
+
 ```python
 html_list = []
-for p in range(1, (data - ano)):
+for p in range(1, (end_year - start_year)):
     list = []
-    req = Request(url + str(ano + p), headers={'User-Agent': 'Mozilla/5.0'})
+    req = Request(url + str(start_year + p), headers={'User-Agent': 'Mozilla/5.0'})
     html = urlopen(req)
     site = BeautifulSoup(html.read(), 'html.parser')
     list.append(site.find_all('span' , {'class': 'dezenas dezenas_mega'}))
     html_list.append(list)
 ```
 
-Faz o scraping anual dos resultados da Mega-Sena e armazena os elementos HTML que contêm os números sorteados.
-
 ---
 
 ### 🔹 5. Transformação dos dados
+
+Extrai o texto (os números) dos elementos HTML e armazena todos em uma lista única.
 
 ```python
 lista =[]
@@ -89,23 +89,23 @@ for a in range(len(html_list)):
         lista.append(i.text)
 ```
 
-Extrai o texto (os números) dos elementos HTML e armazena todos em uma lista única.
-
 ---
 
 ### 🔹 6. Criação do DataFrame com Pandas
 
+Converte a lista de números em um DataFrame para futura análise e visualização.
+
 ```python
 df_numeros_da_mega = pd.DataFrame(lista)
 ```
-
-Converte a lista de números em um DataFrame para futura análise e visualização.
 
 ---
 
 ## 📈 Exemplo de Saída
 
 O DataFrame resultante contém os números sorteados da Mega-Sena organizados em uma única coluna.
+
+Total de aproximadamente **16.600 entradas** (equivalente à soma de todos os jogos realizados até hoje).
 
 | Ord | Números |
 |-----|---------|
@@ -119,8 +119,6 @@ O DataFrame resultante contém os números sorteados da Mega-Sena organizados em
 | 16600 |	507    |
 | 16601 |	577    |
 
-Total de aproximadamente **16.000 entradas** (equivalente à soma de todos os jogos realizados até hoje).
-
 ---
 
 
@@ -132,7 +130,7 @@ Este projeto está sob a licença MIT. Sinta-se livre para utilizar, modificar e
 
 ## 👨‍💻 Autor
 
-**Willdeglan S. S.**  
+### *Willdeglan de S. Santos*
 Data Engineer | DBA | Criador do SQL Dicas  
 🔗 [LinkedIn: @Willdeglan](https://www.linkedin.com/in/willdeglan)  
 📘 [LinkedIn: @sqldicas](https://www.linkedin.com/company/sqldicas)  
