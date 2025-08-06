@@ -1,7 +1,7 @@
 
 # 📊 Web Scraping - Histórica dos Números da Mega-Sena
 
-Este projeto tem como objetivo extrair os resultados históricos da Mega-Sena, desde 1996 até a data atual, utilizando **web scraping com BeautifulSoup** e **Pandas** para transformar os dados em um DataFrame estruturado.
+Este projeto tem como objetivo extrair os resultados históricos da Mega-Sena, desde 1996 até a data atual do site _https://asloterias.com.br_. Utilizei o **BeautifulSoup** para fazer o _web scraping_ e para transformar os dados em um DataFrame estruturado, utilizei o **Pandas**.
 
 ---
 
@@ -49,7 +49,7 @@ from datetime import date
 
 ---
 
-### 🔹 3. Definição da URL e parâmetros
+### 🔹 3. Definição da variáveis e parâmetros
 
 Define o endereço base (URL) para scraping e o intervalo de tempo (de 1996 até o ano atual).
 
@@ -63,7 +63,7 @@ end_year = date.today().year
 
 ### 🔹 4. Extração dos dados com web scraping
 
-Faz o scraping anual dos resultados da Mega-Sena e armazena os elementos HTML que contêm os números sorteados.
+Aqui é como se faz o scraping anual dos resultados da Mega-Sena e armazena os elementos HTML que contêm os números sorteados.
 
 ```python
 html_list = []
@@ -80,7 +80,7 @@ for p in range(1, (end_year - start_year)):
 
 ### 🔹 5. Transformação dos dados
 
-Extrai o texto (os números) dos elementos HTML e armazena todos em uma lista única.
+Fazer a extração do texto (os números) dos elementos HTML e armazena todos em uma lista única.
 
 ```python
 lista =[]
@@ -93,7 +93,7 @@ for a in range(len(html_list)):
 
 ### 🔹 6. Criação do DataFrame com Pandas
 
-Converte a lista de números em um DataFrame para futura análise e visualização.
+Converter a lista de números em um DataFrame para análises futuras e visualização.
 
 ```python
 df_numeros_da_mega = pd.DataFrame(lista)
@@ -105,7 +105,10 @@ df_numeros_da_mega = pd.DataFrame(lista)
 
 O DataFrame resultante contém os números sorteados da Mega-Sena organizados em uma única coluna.
 
-Total de aproximadamente **16.600 entradas** (equivalente à soma de todos os jogos realizados até hoje).
+```python
+df_numeros_da_mega
+```
+O resutado hoje, trouxe um total de **16.601 entradas** (equivalente à soma de todos os jogos realizados até hoje).
 
 | Ord | Números |
 |-----|---------|
@@ -134,6 +137,8 @@ Este projeto está sob a licença MIT. Sinta-se livre para utilizar, modificar e
 Data Engineer | DBA | Criador do SQL Dicas  
 🔗 [LinkedIn: @Willdeglan](https://www.linkedin.com/in/willdeglan)  
 📘 [LinkedIn: @sqldicas](https://www.linkedin.com/company/sqldicas)  
+
+_Obs.: esse projeto foi uma produção baseada no [Video](https://www.youtube.com/watch?v=c7CRZVd2gJ8) do [Michel Santana](https://www.linkedin.com/in/michell-santana/)_
 
 ---
 
