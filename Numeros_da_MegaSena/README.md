@@ -1,5 +1,5 @@
 
-# 📊 Web Scraping - Histórica dos Números da Mega-Sena
+# 📊 Web Scraping - Histórico dos Números da Mega-Sena
 
 Este projeto tem como objetivo extrair os resultados históricos da Mega-Sena, desde 1996 até a data atual do site _https://asloterias.com.br_. Utilizei o **BeautifulSoup** para fazer o _web scraping_ e para transformar os dados em um DataFrame estruturado, utilizei o **Pandas**.
 
