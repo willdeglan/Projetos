@@ -95,3 +95,12 @@ Contribuições são bem-vindas! Fique à vontade para abrir issues ou pull requ
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+### *Willdeglan de S. Santos*
+Data Engineer | DBA | Criador do SQL Dicas  
+🔗 [LinkedIn: @Willdeglan](https://www.linkedin.com/in/willdeglan)  
+📘 [LinkedIn: @sqldicas](https://www.linkedin.com/company/sqldicas)  
+
+_Obs.: esse projeto foi uma produção baseada no [projeto](https://www.linkedin.com/in/talessrocha/details/projects/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAADkzjvgBbQpwiwvZ_Zwl5CaI0zl49iSg_KI) do [Tales Rocha](https://www.linkedin.com/in/talessrocha/)_
