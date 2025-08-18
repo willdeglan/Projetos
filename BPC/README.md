@@ -21,7 +21,7 @@ Este projeto aplica a **Arquitetura Medalhão (camadas bronze, silver e gold)** 
 - Apoiar decisões estratégicas em advocacia previdenciária e gestão pública.
 ---
   
-## Estrutura do BPC
+## Estrutura de notebooks do BPC
 ```
 📦 bpc
 │
@@ -46,6 +46,29 @@ Este projeto aplica a **Arquitetura Medalhão (camadas bronze, silver e gold)** 
 │    └── uf_municipios.csv
 │      
 └── 📜 README.md
+```
+## Estrutura fisica do BPC
+```
+🏦 bpc
+│
+├── 🛢️ raw
+│    ├── 📁 source
+│    │   ├── 📄 censo_2022.csv
+│    │   ├── 📄 inss_2025_01.csv
+│    │   ├── 📄 inss_2025_02.csv
+│    │   ├── 📄 inss_2025_03.csv
+│    │   ├── 📄 inss_2025_04.csv
+│    │   ├── 📄 inss_2025_05.csv
+│    │   ├── 📄 inss_2025_06.csv
+│    │   └── 📄 uf_municipios.csv
+│    │ 
+│    └── 📄 tb.
+│
+├── 🛢️ bronze
+│
+├── 🛢️ silver
+│
+└── 🛢️ gold
 ```
 
 ---
