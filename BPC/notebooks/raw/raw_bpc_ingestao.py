@@ -7,7 +7,7 @@ import os
 # ============================
 
 # Pasta onde os arquivos serão salvos (caminho relativo ao projeto)
-source_dir = "../../source"
+source_dir = "/Workspace/bpc/source"
 os.makedirs(source_dir, exist_ok=True)
 
 # Lista de arquivos para baixar, no formato: (url, "YYYY_MM")
