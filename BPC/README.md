@@ -25,5 +25,4 @@
 │      
 └── README.md
 ```
-
 https://github.com/fdg-fer/bpc-pipeline-databricks/tree/main
