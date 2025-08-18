@@ -27,9 +27,9 @@ Este projeto aplica a **Arquitetura Medalhão (camadas bronze, silver e gold)** 
 │
 ├── 📁 notebooks
 │    ├── 📁 raw
-│    │   ├── raw_bpc_ingestao.py
-│    │   ├── raw_censo_ingestao.py
-│    │   └── raw_uf_municipios_ingestao.py
+│    │   ├── 📄 raw_bpc_raspagem.py
+│    │   ├── 📄 raw_censo_raspagem.py
+│    │   └── 📄 raw_uf_municipios_raspagem.py
 │    │
 │    ├── 📁 bronze
 │    ├── 📁 silver
@@ -45,7 +45,7 @@ Este projeto aplica a **Arquitetura Medalhão (camadas bronze, silver e gold)** 
 │    ├── censo_2022.csv
 │    └── uf_municipios.csv
 │      
-└── README.md
+└── 📜 README.md
 ```
 
 ---
