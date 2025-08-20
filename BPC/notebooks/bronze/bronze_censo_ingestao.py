@@ -10,7 +10,7 @@ import pandas as pd
 import json
 
 # Lê o arquivo inteiro como JSON
-with open("/Volumes/bpc/raw/source/censo_2022.csv", "r", encoding="utf-8") as f:
+with open(f"{volume}censo_2022.csv", "r", encoding="utf-8") as f:
     data = json.load(f)  # vira lista de dicts
 
 # 3. Normalizar: pegar os municípios e populações
@@ -32,8 +32,17 @@ df_spark = spark.createDataFrame(df_final)
 
 # Salvar no catálogo bpc, schema bronze, tabela tb_bronze_censo_2022
 (
-    df_spark.write
+df_spark.write
     .format("delta")
-    .mode("overwrite")  # overwrite sobrescreve, pode trocar para "append" se for incremental
+    .option("overwriteSchema", "true")
+    .mode("overwrite")  # "overwrite" sobrescreve, pode trocar para "append" se for incremental
     .saveAsTable(f"{catalogo}.{esquema}.{tabela}")
 )
+
+# exibir a tabela delta salva e contagem de linhas
+df_spark_result = spark.read.table(
+    f"{catalogo}.{esquema}.{tabela}"
+)
+display(df_spark_result.limit(5))
+total_linhas = df_spark_result.count()
+print(f"Total de linhas: {total_linhas}")
