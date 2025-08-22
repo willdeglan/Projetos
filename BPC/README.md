@@ -75,10 +75,10 @@ agir de forma mais direcionada e eficaz.
 
 ## 🗄️ Catálogo (Unity Catalog / Hive Metastore)
 
-    🏦 bpc
+    🏦 bpc (Catalog)
     │
-    ├── 🛢️ raw
-    │   └── 📂 source
+    ├── 🛢️ raw (Schema)
+    │   └── 📂 source (Volume)
     │       ├── 📄 censo_2022.csv
     │       ├── 📄 inss_2025_01.csv
     │       ├── 📄 inss_2025_02.csv
@@ -90,17 +90,17 @@ agir de forma mais direcionada e eficaz.
     │       ├── 📄 municipios_ibge2.csv
     │       └── 📄 uf_municipios.csv
     │
-    ├── 🛢️ bronze
-    │   ├── 🗂️ tb_bronze_censo_2022
-    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06
-    │   └── 🗂️ tb_bronze_municipios_ibge
+    ├── 🛢️ bronze (Schema)
+    │   ├── 🗂️ tb_bronze_censo_2022 (Delta Table)
+    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06 (Delta Table)
+    │   └── 🗂️ tb_bronze_municipios_ibge (Delta Table)
     │
-    ├── 🛢️ silver
-    │   ├── 🗂️ tb_silver_inss_bpc_2025 🚧
-    │   └── 🗂️ tb_silver_municipios_ibge
+    ├── 🛢️ silver (Schema)
+    │   ├── 🗂️ tb_silver_inss_bpc_2025 🚧 (Delta Table)
+    │   └── 🗂️ tb_silver_municipios_ibge (Delta Table)
     │
-    └── 🛢️ gold
-        └── 🚧 (sem tabelas ainda)
+    └── 🛢️ gold (Schema)
+        └── 🚧 (sem tabelas ainda) (Delta Table)
 
 ### Esquema visual
 
