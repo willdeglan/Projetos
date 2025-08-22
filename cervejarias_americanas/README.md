@@ -79,12 +79,21 @@ O pipeline segue o padrão de arquitetura em camadas (bronze, silver e gold):
 
 ## ▶️ Execução
 
-Execute os notebooks na ordem listada acima:
+Execute os notebooks na ordem listada abaixo:
 
 1. `api_1_bronze.ipynb` – Raspagem dos dados da API e conversão para DataFrame.
 2. `api_2_silver.ipynb` – Criação da tabela limpa com campos bem definidos.
 3. `api_3_gold.ipynb` – Seleção de colunas e estruturação para análise.
 4. `api_4_insights.ipynb` – Consultas SQL com agrupamentos e dados para visualização.
+
+## Prints do projeto rodando no databricks
+
+Foi criado um pipeline e agendado para rodar todos os dias as 21h45 e se apresentar qualquer erro, notificar via e-mail
+
+<img width="1150" height="381" alt="image" src="https://github.com/user-attachments/assets/e8fa35e4-d780-4483-9d07-36fc47353fb4" />
+<img width="1172" height="856" alt="image" src="https://github.com/user-attachments/assets/f83d6535-5b5c-4dcd-bc83-4d5ca96d15be" />
+<img width="1124" height="222" alt="image" src="https://github.com/user-attachments/assets/2f2e47e9-8182-408e-a981-27fefdfe3286" />
+<img width="498" height="765" alt="image" src="https://github.com/user-attachments/assets/7189a616-5c99-45a4-8443-57e677b53ac3" />
 
 ---
 
