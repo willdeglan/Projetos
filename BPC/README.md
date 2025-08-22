@@ -1,4 +1,4 @@
-# BPC -- Análise de Judicialização, Cobertura e Prazos
+# BPC - Análise de Judicialização, Cobertura e Prazos
 
 O Benefício de Prestação Continuada (BPC) é um dos temas mais debatidos
 no âmbito da assistência social no Brasil. Voltado para pessoas idosas
