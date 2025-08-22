@@ -91,16 +91,16 @@ agir de forma mais direcionada e eficaz.
     │       └── 📄 uf_municipios.csv
     │
     ├── 🛢️ bronze (Schema)
-    │   ├── 🗂️ tb_bronze_censo_2022 (Delta Table)
-    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06 (Delta Table)
-    │   └── 🗂️ tb_bronze_municipios_ibge (Delta Table)
+    │   ├── 🗂️ tb_bronze_censo_2022 
+    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06 
+    │   └── 🗂️ tb_bronze_municipios_ibge 
     │
     ├── 🛢️ silver (Schema)
-    │   ├── 🗂️ tb_silver_inss_bpc_2025 🚧 (Delta Table)
-    │   └── 🗂️ tb_silver_municipios_ibge (Delta Table)
+    │   ├── 🗂️ tb_silver_inss_bpc_2025 🚧 
+    │   └── 🗂️ tb_silver_municipios_ibge
     │
     └── 🛢️ gold (Schema)
-        └── 🚧 (sem tabelas ainda) (Delta Table)
+        └── 🚧 (sem tabelas ainda) 
 
 ### Esquema visual
 
