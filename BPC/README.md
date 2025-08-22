@@ -21,54 +21,65 @@ Este projeto aplica a **Arquitetura Medalhão (camadas bronze, silver e gold)** 
 - Apoiar decisões estratégicas em advocacia previdenciária e gestão pública.
 ---
   
-## Estrutura de notebooks do BPC
+## 📂 Workspace (Notebooks / Código)
 ```
-📦 bpc
+📂 bpc
 │
-├── 📁 notebooks
-│    ├── 📁 raw
-│    │   ├── 📄 raw_bpc_raspagem.py
-│    │   ├── 📄 raw_censo_raspagem.py
-│    │   └── 📄 raw_uf_municipios_raspagem.py
-│    │
-│    ├── 📁 bronze
-│    │   ├── 📄
-│    │   └── 📄
-│    │
-│    ├── 📁 silver
-│    │   ├── 📄
-│    │   └── 📄
-│    │
-│    └── 📁 gold
-│        ├── 📄
-│        └── 📄
-│    
-└── 📜 README.md
+├── 📂 raw
+│   ├── 📄 conferindoCSVnopandas.py
+│   ├── 📄 raw_bpc_raspagem.py
+│   ├── 📄 raw_censo_raspagem.py
+│   └── 📄 raw_uf_municipios_raspagem.py
+│
+├── 📂 bronze
+│   ├── 📄 bronze_bpc_ingestao.py
+│   ├── 📄 bronze_censo_ingestao.py
+│   └── 📄 bronze_municipios_ibge_ingestao.py
+│
+├── 📂 silver
+│   └── 🚧 (em construção)
+│
+└── 📂 gold
+    └── 🚧 (em construção)
+
 ```
-## Estrutura fisica do BPC
+## 🗄️ Catálogo (Unity Catalog / Hive Metastore)
 ```
 🏦 bpc
 │
 ├── 🛢️ raw
-│    ├── 📁 source
-│    │   ├── 📄 censo_2022.csv
-│    │   ├── 📄 inss_2025_01.csv
-│    │   ├── 📄 inss_2025_02.csv
-│    │   ├── 📄 inss_2025_03.csv
-│    │   ├── 📄 inss_2025_04.csv
-│    │   ├── 📄 inss_2025_05.csv
-│    │   ├── 📄 inss_2025_06.csv
-│    │   └── 📄 uf_municipios.csv
-│    │ 
-│    └── 📄 tb.
+│   └── 📂 source
+│       ├── 📄 censo_2022.csv
+│       ├── 📄 inss_2025_01.csv
+│       ├── 📄 inss_2025_02.csv
+│       ├── 📄 inss_2025_03.csv
+│       ├── 📄 inss_2025_04.csv
+│       ├── 📄 inss_2025_05.csv
+│       ├── 📄 inss_2025_06.csv
+│       ├── 📄 municipios_ibge.csv
+│       ├── 📄 municipios_ibge2.csv
+│       └── 📄 uf_municipios.csv
 │
 ├── 🛢️ bronze
+│   ├── 🗂️ tb_bronze_censo_2022
+│   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06
+│   └── 🗂️ tb_bronze_municipios_ibge
 │
 ├── 🛢️ silver
+│   └── 🗂️ tb_silver_municipios_ibge
 │
 └── 🛢️ gold
-```
+    └── 🚧 (sem tabelas ainda)
 
+```
+### Esquema visual
+```
+📂 → diretório de notebooks (workspace)
+📄 → notebook/arquivo Python
+🛢️ → schema dentro do catálogo
+🗂️ → tabela Delta
+📄 (no catálogo/raw) → CSV bruto
+```
 ---
 ## Fonte de Dados
 
