@@ -51,7 +51,7 @@ D- Gold\Indicadores Analíticos
 📂 bpc
 │
 ├── 📂 raw
-│   ├── 📄 raw_criando_estrutura.py
+│   ├── 📄 raw_1_criando_estrutura.py
 │   ├── 📄 raw_bpc_raspagem.py
 │   ├── 📄 raw_censo_raspagem.py
 │   └── 📄 raw_uf_municipios_raspagem.py
@@ -163,13 +163,13 @@ Camada final com **tabelas analíticas prontas** para dashboards
     │       └── 📄 uf_municipios.csv
     │
     ├── 🛢️ bronze (Schema)
-    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06
     │   ├── 🗂️ tb_bronze_censo_2022
+    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06
     │   └── 🗂️ tb_bronze_municipios_ibge
     │
     ├── 🛢️ silver (Schema)
-    │   ├── 🗂️ tb_silver_inss_bpc_2025
     │   ├── 🗂️ tb_silver_censo_2022
+    │   ├── 🗂️ tb_silver_inss_bpc_2025
     │   └── 🗂️ tb_silver_municipios_ibge
     │
     └── 🛢️ gold (Schema)
