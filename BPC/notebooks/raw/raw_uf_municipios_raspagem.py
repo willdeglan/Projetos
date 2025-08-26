@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # 1. Define o diretório no workspace
-source_dir = "/Workspace/bpc/source"
+source_dir = "/Volumes/bpc/raw/source/"
 
 # 2. Cria o diretório se não existir
 try:
@@ -39,5 +39,6 @@ except Exception as e:
     print("""
     Soluções alternativas:
     1. Verifique as permissões do workspace
-    2. Tente baixar manualmente o csv em "https://raw.githubusercontent.com/kelvins/Municipios-Brasileiros/main/csv/municipios.csv"
+    2. Tente usar '/dbfs/FileStore/' em vez de '/Workspace/'
+    3. Teste com um caminho mais simples: '/Workspace/temp/'
     """)
