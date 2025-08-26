@@ -1,5 +1,5 @@
 # BPC - Análise de Judicialização, Cobertura e Prazos
-<img width="870" height="420" alt="image" src="bpc.jpg" />
+<img width="870" height="420" alt="Banner BPC" src="bpc.jpg" />
 
 O **Benefício de Prestação Continuada (BPC)** é voltado para pessoas
 idosas ou com deficiência em situação de vulnerabilidade.\
@@ -31,6 +31,8 @@ na advocacia previdenciária.
 # 🧩 Arquitetura Medalhão
 
 O projeto segue a **Arquitetura Medalhão (Medallion Architecture)** no Databricks, dividida em camadas:
+
+<img width="870" height="420" alt="image" src="arc_med.png" />
 
 ```plaintext
 A- Raw\CSVs Originais
@@ -194,17 +196,18 @@ públicas:
     [Fonte: INSS - Dados
     Abertos](https://dadosabertos.inss.gov.br/dataset/beneficios-concedidos-plano-de-dados-abertos-jun-2023-a-jun-2025)
     -   Quantidade de arquivos: 6 CSVs (concessões de jan/25 a jun/25)
+
 -   **IBGE (Censo 2022)**: População total por município, utilizada para
     cálculo de cobertura e identificação do público-alvo.\
     [Fonte: Censo IBGE
     2022](https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=downloads/)
     -   Quantidade de arquivos: 1 CSV
+
 -   **Municípios/UF/Região**: Dados de referência com códigos de
     municípios, sigla UF e região geográfica.\
     [Fonte: IBGE -- Tabela de Referência
     Territorial](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html/)
     -   Quantidade de arquivos: 1 CSV
-    -   
 ------------------------------------------------------------------------
 
 # 🚀 Roadmap
