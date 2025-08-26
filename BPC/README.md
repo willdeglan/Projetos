@@ -186,15 +186,24 @@ Legenda:\
 
 # 📑 Fonte de Dados
 
--   **INSS** -- Concessões do BPC (2025 jan-jun).\
-    [Fonte](https://dadosabertos.inss.gov.br/dataset/beneficios-concedidos-plano-de-dados-abertos-jun-2023-a-jun-2025)
+Os dados utilizados no projeto foram extraídos de três principais fontes
+públicas:
 
--   **IBGE (Censo 2022)** -- População residente por município.\
-    [Fonte](https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=downloads/)
-
--   **IBGE -- Malhas territoriais** -- Municípios, UFs e regiões.\
-    [Fonte](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html/)
-
+-   **INSS**: Dados de concessões do BPC por mês (2025 jan-jun), disponível em csv.\
+    [Fonte: INSS - Dados
+    Abertos](https://dadosabertos.inss.gov.br/dataset/beneficios-concedidos-plano-de-dados-abertos-jun-2023-a-jun-2025)
+    -   Quantidade de arquivos: 6 CSVs (concessões de jan/25 a jun/25)
+-   **IBGE (Censo 2022)**: População total por município, utilizada para
+    cálculo de cobertura e identificação do público-alvo.\
+    [Fonte: Censo IBGE
+    2022](https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=downloads/)
+    -   Quantidade de arquivos: 1 CSV
+-   **Municípios/UF/Região**: Dados de referência com códigos de
+    municípios, sigla UF e região geográfica.\
+    [Fonte: IBGE -- Tabela de Referência
+    Territorial](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html/)
+    -   Quantidade de arquivos: 1 CSV
+    -   
 ------------------------------------------------------------------------
 
 # 🚀 Roadmap
