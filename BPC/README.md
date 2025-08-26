@@ -7,10 +7,9 @@ Diferente dos benefícios previdenciários, não exige contribuição prévia,
 o que o torna um tema de grande relevância social, política e
 orçamentária.
 
-A concessão pode ocorrer de duas formas: - **Administrativa** →
-diretamente pelo INSS.\
-- **Judicial** → quando o pedido é negado e o requerente recorre à
-Justiça.
+A concessão pode ocorrer de duas formas: 
+- **Administrativa** → diretamente pelo INSS.
+- **Judicial** → quando o pedido é negado e o requerente recorre à Justiça.
 
 Compreender **quais regiões apresentam índices elevados de
 judicialização e como se comportam os indicadores de cobertura e
@@ -52,6 +51,7 @@ D- Gold\Indicadores Analíticos
 📂 bpc
 │
 ├── 📂 raw
+│   ├── 📄 raw_criando_estrutura.py
 │   ├── 📄 raw_bpc_raspagem.py
 │   ├── 📄 raw_censo_raspagem.py
 │   └── 📄 raw_uf_municipios_raspagem.py
@@ -70,7 +70,7 @@ D- Gold\Indicadores Analíticos
     ├── 📄 gold_bpc_cobertura.py
     └── 📄 gold_bpc_judicializacao.py
 ```
-## 🔹 Raw -- Ingestão de Dados
+## 🔹 Raw - Ingestão de Dados
 
 Responsável por **trazer os CSVs originais** para dentro do ambiente.\
 Aqui não há transformação, apenas ingestão.
@@ -86,7 +86,7 @@ Aqui não há transformação, apenas ingestão.
 
 ------------------------------------------------------------------------
 
-## 🔹 Bronze -- Dados Brutos Padronizados
+## 🔹 Bronze - Dados Brutos Padronizados
 
 Nesta camada, os dados são convertidos em **Delta Tables**.\
 Não há grandes transformações, apenas padronização inicial (snake_case).
@@ -100,7 +100,7 @@ Não há grandes transformações, apenas padronização inicial (snake_case).
 
 ------------------------------------------------------------------------
 
-## 🔹 Silver -- Tratamento e Enriquecimento
+## 🔹 Silver - Tratamento e Enriquecimento
 
 Aqui os dados são **limpos, padronizados e enriquecidos** para permitir
 integrações corretas.
@@ -124,7 +124,7 @@ integrações corretas.
 
 ------------------------------------------------------------------------
 
-## 🔹 Gold -- Indicadores Analíticos
+## 🔹 Gold - Indicadores Analíticos
 
 Camada final com **tabelas analíticas prontas** para dashboards
 (Databricks SQL / Power BI).
