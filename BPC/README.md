@@ -1,4 +1,5 @@
-# BPC -- Análise de Judicialização, Cobertura e Prazos
+# BPC - Análise de Judicialização, Cobertura e Prazos
+<img width="870" height="420" alt="image" src="bpc.jpg" />
 
 O **Benefício de Prestação Continuada (BPC)** é voltado para pessoas
 idosas ou com deficiência em situação de vulnerabilidade.\
