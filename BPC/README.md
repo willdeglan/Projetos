@@ -30,20 +30,45 @@ na advocacia previdenciária.
 
 # 🧩 Arquitetura Medalhão
 
-O projeto segue a **Arquitetura Medalhão (Medallion Architecture)** no
-Databricks, dividida em camadas:
+O projeto segue a **Arquitetura Medalhão (Medallion Architecture)** no Databricks, dividida em camadas:
 
-``` mermaid
-flowchart LR
-    A[Raw\n(CSVs Originais)] --> B[Bronze\nDelta Tables Brutas]
-    B --> C[Silver\nDados Tratados e Padronizados]
-    C --> D[Gold\nIndicadores Analíticos]
+```plaintext
+A- Raw\CSVs Originais
+B- Bronze\Delta Tables Brutas
+C- Silver\Dados Tratados e Padronizados
+D- Gold\Indicadores Analíticos
+
+    A --> B
+    B --> C
+    C --> D
+
 ```
 
 ------------------------------------------------------------------------
 
 # 📂 Estrutura dos Notebooks
-
+``` plaintext
+📂 bpc
+│
+├── 📂 raw
+│   ├── 📄 raw_bpc_raspagem.py
+│   ├── 📄 raw_censo_raspagem.py
+│   └── 📄 raw_uf_municipios_raspagem.py
+│
+├── 📂 bronze
+│   ├── 📄 bronze_bpc_ingestao.py
+│   ├── 📄 bronze_censo_ingestao.py
+│   └── 📄 bronze_municipios_ibge_ingestao.py
+│
+├── 📂 silver
+│   ├── 📄 silver_bpc_tratamento.py
+│   ├── 📄 silver_ibge_tratamento.py
+│   └── 📄 silver_censo_tratamento.py
+│
+└── 📂 gold
+    ├── 📄 gold_bpc_cobertura.py
+    └── 📄 gold_bpc_judicializacao.py
+```
 ## 🔹 Raw -- Ingestão de Dados
 
 Responsável por **trazer os CSVs originais** para dentro do ambiente.\
@@ -116,6 +141,8 @@ Camada final com **tabelas analíticas prontas** para dashboards
     Explicação: Calcula a **judicialização do BPC** (% concessões
     judiciais vs administrativas).
 
+
+
 ------------------------------------------------------------------------
 
 # 🗄️ Estrutura no Catálogo (Unity Catalog / Hive Metastore)
@@ -124,24 +151,29 @@ Camada final com **tabelas analíticas prontas** para dashboards
     │
     ├── 🛢️ raw (Schema)
     │   └── 📂 source (Volume)
-    │       ├── censo_2022.csv
-    │       ├── inss_2025_01.csv ... inss_2025_06.csv
-    │       ├── municipios_ibge.csv
-    │       └── uf_municipios.csv
+    │       ├── 📄 censo_2022.csv
+    │       ├── 📄 inss_2025_01.csv 
+    │       ├── 📄 inss_2025_02.csv
+    │       ├── 📄 inss_2025_03.csv
+    │       ├── 📄 inss_2025_04.csv
+    │       ├── 📄 inss_2025_05.csv
+    │       ├── 📄 inss_2025_06.csv
+    │       ├── 📄 municipios_ibge.csv
+    │       └── 📄 uf_municipios.csv
     │
     ├── 🛢️ bronze (Schema)
-    │   ├── tb_bronze_inss_bpc_2025_01a06
-    │   ├── tb_bronze_censo_2022
-    │   └── tb_bronze_municipios_ibge
+    │   ├── 🗂️ tb_bronze_inss_bpc_2025_01a06
+    │   ├── 🗂️ tb_bronze_censo_2022
+    │   └── 🗂️ tb_bronze_municipios_ibge
     │
     ├── 🛢️ silver (Schema)
-    │   ├── tb_silver_inss_bpc_2025
-    │   ├── tb_silver_censo_2022
-    │   └── tb_silver_municipios_ibge
+    │   ├── 🗂️ tb_silver_inss_bpc_2025
+    │   ├── 🗂️ tb_silver_censo_2022
+    │   └── 🗂️ tb_silver_municipios_ibge
     │
     └── 🛢️ gold (Schema)
-        ├── tb_gold_cobertura_bpc
-        └── tb_gold_judicializacao_bpc
+        ├── 🗂️ tb_gold_cobertura_bpc
+        └── 🗂️ tb_gold_judicializacao_bpc
 
 Legenda:\
 📂 diretório de notebooks (workspace)\
