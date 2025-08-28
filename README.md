@@ -1,6 +1,6 @@
 # Meu repositorio de Projetos de Engenhraria de dados  
-Sejam bem vindos ao repositorio de projetos de engenharia de dados do Will (willdeglan), Eu kkk . Aqui vou postar, normalmente\
-todosos meus projetos relacionados a engenhraria de dados, sejam simples ou complexos.\
+Sejam bem vindos ao repositorio de projetos de engenharia de dados do Will (willdeglan), Eu kkk . Aqui vou postar, normalmente
+todosos meus projetos relacionados a engenhraria de dados, sejam simples ou complexos.
 <br>
 <!--  
 <img width="676" height="320" alt="image" src="img/databricks_github.png" /> 
