@@ -13,7 +13,7 @@ Fique a vontade para verificar cada um dos projetos
 
 ## Estou pensando em mudar a logo do SQL DICAS para essa:
 
-<img width="400" height="400" alt="sqldicas" src="img/sqldicasnew.png" />
+<img alt="sqldicas" src="img/sqldicasnew.png" />
 
 _modificação:_
 * remoção do quadro com a Letra **W**
