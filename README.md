@@ -8,3 +8,12 @@ Esse repositário é gravado todos os Projetos criados no databricks via **Datab
 4. **[Sistema Bancario](sistema_bancario)** - Projeto de POO em Python da DIO
 
 Fique a vontade para verificar cada um dos projetos
+
+---
+
+## Estou pensando em mudar a logo do SQL DICAS para essa:
+
+<img width="676" height="320" alt="sqldicas" src="img/sqldicasnew.png" />
+
+_modificação:_
+* remoção do quadro com a Letra **W**
