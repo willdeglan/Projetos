@@ -1,5 +1,5 @@
-# BPC - Análise de Judicialização, Cobertura e Prazos
-<img width="870" height="420" alt="Banner BPC" src="bpc.jpg" />
+# BPC - Análise de Judicialização, Cobertura e Prazos 
+<br> <img width="870" height="420" alt="Banner BPC" src="bpc.jpg" />
 
 O **Benefício de Prestação Continuada (BPC)** é voltado para pessoas
 idosas ou com deficiência em situação de vulnerabilidade.\
@@ -31,21 +31,9 @@ na advocacia previdenciária.
 # 🧩 Arquitetura Medalhão
 
 O projeto segue a **Arquitetura Medalhão (Medallion Architecture)** no Databricks, dividida em camadas:
-
+<br><br>
 <img width="870" height="420" alt="image" src="arc_med.png" />
-
-```plaintext
-A- Raw\CSVs Originais
-B- Bronze\Delta Tables Brutas
-C- Silver\Dados Tratados e Padronizados
-D- Gold\Indicadores Analíticos
-
-    A --> B
-    B --> C
-    C --> D
-
-```
-
+<br><br>
 ------------------------------------------------------------------------
 
 # 📂 Estrutura dos Notebooks
