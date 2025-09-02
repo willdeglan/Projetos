@@ -1,4 +1,5 @@
-2. No exemplo do bot que você construiu, o conjunto de dados necessários estava disponível 
+Questão 2. 
+No exemplo do bot que você construiu, o conjunto de dados necessários estava disponível 
 no site diretamente por meio de um link já definido. No entanto como você resolveria o 
 problema da captura dos dados caso fosse necessário antes navegar no site (executando 
 passos e cliques por meio de menus, login, botões, links) para se chegar ao arquivo alvo 
@@ -9,9 +10,8 @@ Se caso a url com o dataset não estivesse disponível em um link direto, seria 
 automatizar a navegação até o arquivo alvo.
 
 A solução possiveis é utilizar bibliotecas de automação de navegação, como 
-* Selenium (Python)
-* Playwright ou 
-* Puppeteer
+* Selenium (Python) - https://www.youtube.com/watch?app=desktop&v=XLkxOBY965w
+* Playwright - https://www.youtube.com/watch?v=yNuTu8csOU0
 
 Com essas bibliotecas, conseguimos simular a interação humana em um navegador:
 * login
