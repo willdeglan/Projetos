@@ -1,0 +1,30 @@
+2. No exemplo do bot que você construiu, o conjunto de dados necessários estava disponível 
+no site diretamente por meio de um link já definido. No entanto como você resolveria o 
+problema da captura dos dados caso fosse necessário antes navegar no site (executando 
+passos e cliques por meio de menus, login, botões, links) para se chegar ao arquivo alvo 
+(se não existisse um link direto para o conjunto de dados).  
+
+Resposta:
+Se caso a url com o dataset não estivesse disponível em um link direto, seria necessário 
+automatizar a navegação até o arquivo alvo.
+
+A solução possiveis é utilizar bibliotecas de automação de navegação, como 
+* Selenium (Python)
+* Playwright ou 
+* Puppeteer
+
+Com essas bibliotecas, conseguimos simular a interação humana em um navegador:
+* login
+* clique em menus e botões ou 
+* download de arquivos.
+
+O processo seria estruturado em etapas:
+1. Abrir o navegador de forma programática (headless).
+2. Executar login (se necessário) enviando usuário/senha.
+3. Navegar pelos menus e links, simulando cliques.
+4. Localizar o link de download ou fazer o download automático.
+5. Assim que conseguir o dataset com os dados bruto (CSV/JSON), o pipeline segue normalmente:
+   transformação > padronização > armazenamento em parquet > ingestão na arquitetura Bronze
+
+Esse processo vai garantir a automação e reprodutibilidade, tornando desnecessária a intervenção 
+manual e tornando o pipeline resiliente.
