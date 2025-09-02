@@ -9,14 +9,20 @@ Descrição:
 import json
 import pandas as pd
 from pathlib import Path
+import requests  # <--- necessário para acessar a URL
 
 # =========================
 # Função 1 - Ler dados JSON
 # =========================
-def carregar_dados_json(caminho_arquivo: str) -> dict:
-    """Carrega o JSON bruto do IPCA a partir de um arquivo local ou request"""
-    with open(caminho_arquivo, "r", encoding="utf-8") as f:
-        return json.load(f)
+def carregar_dados_json(origem: str) -> dict:
+    """Carrega o JSON bruto do IPCA (arquivo local ou URL)"""
+    if origem.startswith("http"):
+        response = requests.get(origem)
+        response.raise_for_status()
+        return response.json()
+    else:
+        with open(origem, "r", encoding="utf-8") as f:
+            return json.load(f)
 
 # ===================================
 # Função 2 - Transformar para tabular
@@ -48,8 +54,9 @@ def salvar_parquet(df: pd.DataFrame, caminho_saida: str) -> None:
 # Execução principal do bot
 # =========================
 if __name__ == "__main__":
-    # Etapa 1: Carregar dados (simulando request da API)
-    dados = carregar_dados_json("https://sidra.ibge.gov.br/Ajax/JSon/Tabela/1/1737?versao=-1")
+    # Etapa 1: Carregar dados (arquivo local OU request da API)
+    url = "https://sidra.ibge.gov.br/Ajax/JSon/Tabela/1/1737?versao=-1"
+    dados = carregar_dados_json(url)
 
     # Etapa 2: Transformar em tabela
     df_ipca = transformar_em_tabela(dados)
