@@ -1,22 +1,26 @@
 """
 Bot de Dados - IPCA (IBGE / SIDRA)
-Autor: Willdeglan S. S.
+Autor: Willdeglan do SQL Dicas
 Descrição:
     Este script consome dados do IPCA no formato JSON, organiza em tabela,
     e salva no formato Parquet para consumo analítico.
-"""
-%pip install -U requests pyarrow
 
-import json
+No databricks não precisa rodar esse comando, mas se for rodar o codigo 
+fora do databricks, é necessário rodar o seguinte comando:
+ 
+    %pip install -U requests pyarrow
+"""
+
 import pandas as pd
-from pathlib import Path # <--- para criar pastas de saída com segurança.
+from pathlib import Path # <--- para criar pastas de saída com segurança (output)
 import requests  # <--- necessário para acessar a URL
+import json # <--- necessário para acessar JSON local
 
 # =========================
 # Função 1 - Ler dados JSON
 # =========================
+"""Carrega o JSON bruto do IPCA (arquivo local ou URL)"""
 def carregar_dados_json(origem: str) -> dict:
-    """Carrega o JSON bruto do IPCA (arquivo local ou URL)"""
     if origem.startswith("http"):
         response = requests.get(origem)
         response.raise_for_status() # informa o codigo do erro, se houver
@@ -29,13 +33,13 @@ def carregar_dados_json(origem: str) -> dict:
 # ===================================
 # Função 2 - Transformar para tabular
 # ===================================
+"""Transforma os períodos do JSON em DataFrame pandas, se precisar ele adapta novas colunas automaticamente"""
 def transformar_em_tabela(dados_json: dict) -> pd.DataFrame:
-    """Transforma os períodos do JSON em DataFrame pandas, adaptando colunas automaticamente"""
     periodos = dados_json["Periodos"]["Periodos"]
 
     df = pd.DataFrame(periodos)
 
-    # dicionário de renomeação (só para colunas conhecidas)
+    # dicionário de renomeação (quando a coluna for conhecida) no padrão snake_case
     rename_map = {
         "Id": "id",
         "Codigo": "codigo",
@@ -44,16 +48,16 @@ def transformar_em_tabela(dados_json: dict) -> pd.DataFrame:
         "DataLiberacao": "data_liberacao"
     }
 
-    # aplica rename só nas colunas que existem
-    df = df.rename(columns={k: v for k, v in rename_map.items() if k in df.columns})
+    df = df.rename(columns=rename_map)
 
     return df
 
 # ====================================
 # Função 3 - Salvar em formato Parquet
 # ====================================
+"""Salva os dados tabulares em formato parquet"""
 def salvar_parquet(df: pd.DataFrame, caminho_saida: str) -> None:
-    """Salva os dados tabulares em formato parquet"""
+
     Path(caminho_saida).parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(caminho_saida, engine="pyarrow", index=False)
 
@@ -69,7 +73,11 @@ if __name__ == "__main__":
     df_ipca = transformar_em_tabela(dados)
 
     # Etapa 3: Salvar parquet
-    salvar_parquet(df_ipca, "output/ipca.parquet")
+    salvar_parquet(df_ipca, "parquet/ipca.parquet")
 
-    print("✅ Bot rodando com sucesso. Arquivo salvo em 'output/ipca.parquet'")
-    print("output/ipca.parquet")
+# =============================
+# Exibindo as informações do DF
+# =============================
+print("✅ Bot rodando com sucesso. Arquivo salvo em 'output/ipca.parquet'")
+print(df_ipca.head())  # Mostra as primeiras 5 linhas
+print(f"Número de linhas: {len(df_ipca)}")  # faz a contagem das linhas
