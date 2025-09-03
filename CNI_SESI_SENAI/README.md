@@ -57,22 +57,26 @@ Utilize exemplos práticos e mencione os principais componentes. A resposta deve
 Em projetos pessoais que desenvolvo, foco em organização como arquitetura medalhão assim o projeto
 fica organizado, rastreável e tem uma boa qualidade no fluxo de dados 
 ```
-1.	**Extração de dados:** pode ser por dois (2) caminhos: Batch ou Streaming 
+1.	**Extração de dados:** \
+   pode ser por dois (2) caminhos: Batch ou Streaming 
 •	Batch: A raspagem ou ingestão de dados são carregados em lotes ou arquivos (CSV, JSON ou Planilhas) para a Silver ou pode armazenar em um storage (raw) e inserir em tabelas do formato original (cru).
 •	Streaming: quando necessário, é utilizado conectores para consumir dados em tempo real (por exemplo, Kafka ou Event Hub no Azure).
 
-2.	Transformação e limpeza dados: depois dos arquivos obtidos na extração, é realizar a padronização (tipagem dos dados, normalização ou “desnormalização”, correção de colunas) tratar as inconsistências e imperfeições como duplicatas, nulos ou dados inconsistentes.
+2.	Transformação e limpeza dados: \
+   depois dos arquivos obtidos na extração, é realizar a padronização (tipagem dos dados, normalização ou “desnormalização”, correção de colunas) tratar as inconsistências e imperfeições como duplicatas, nulos ou dados inconsistentes.
 
-3.	Armazenamento em camadas: 
-•	BRONZE: datasets crus, como obtidos, podem ser organizados por data de carga, ou até particionado. 
-•	SILVER: já começa a ser tratado, agrupado, padronizado e até enriquecido, eliminando dados sujos ou incompletos.
+3.	Armazenamento em camadas: \
+•	BRONZE: datasets crus, como obtidos, podem ser organizados por data de carga, ou até particionado. \
+•	SILVER: já começa a ser tratado, agrupado, padronizado e até enriquecido, eliminando dados sujos ou incompletos.\
 •	 GOLD: dados pronto para ser consumido, disponibilizado como StarSchema, metricas já calculadas e agregações.
 
-4.	Orquestração: No Databricks Free Edition, por exemplo, de forma automatizada, organizo um código python para cada etapa (1_bronze, 2_silver, 3_gold) e agendo a execução em sequência. Em ambientes corporativos, ferramentas como Airflow, Databricks Jobs e ADF fazem o monitoramento e alertas em caso de falhas.
+4.	Orquestração: \
+   No Databricks Free Edition, por exemplo, de forma automatizada, organizo um código python para cada etapa (1_bronze, 2_silver, 3_gold) e agendo a execução em sequência. Em ambientes corporativos, ferramentas como Airflow, Databricks Jobs e ADF fazem o monitoramento e alertas em caso de falhas.
 
-5.	Disponibilização: para consumo na Gold os dados podem ser disponibilizados de algumas formas: 
-•	APIs: para integração com aplicação 
-•	DASHBOARD: utilizando BI 
+5.	Disponibilização: \
+   para consumo na Gold os dados podem ser disponibilizados de algumas formas: \
+•	APIs: para integração com aplicação \
+•	DASHBOARD: utilizando BI \
 •	CONSULTAS ANALÍTICAS: possibilitando ser consumido em relatórios com SQL
  
 ## Parte 3 – Desafio Prático – Construção de Bot de Dados
