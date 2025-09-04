@@ -1,8 +1,10 @@
-# Meu repositorio de Projetos de Engenhraria de dados  
-Sejam bem vindos ao **Repositorio de projetos** de Engenharia de Dados do Will! Meu Rep Favorito!. Aqui vou postar, normalmente,
-os meus projetos relacionados a engenhraria de dados, sejam simples ou complexos.
+# Meu repositorio de Projetos de Engenharia de dados  
+Sejam bem vindos ao **Repositorio de projetos** de Engenharia de Dados do Will! Meu Rep Favorito!. \
+Aqui postrei, normalmente, projetos relacionados a engenhraria de dados, simples ou complexos.
 <br>
-<!--  
+ 
+<img width="780" alt="image" src="img/bannerProjDataEng.png" />
+<!-- 
 <img width="676" height="320" alt="image" src="img/databricks_github.png" /> 
 -->
 
