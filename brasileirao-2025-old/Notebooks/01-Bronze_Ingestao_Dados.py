@@ -1,15 +1,15 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC ## 📋 Notebook 01 - Parte 1: Configuração Inicial
-# MAGIC 
+# MAGIC
 # MAGIC Vamos testar passo a passo a configuração do ambiente.
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC ### **Passo 1: Verificar se podemos criar um Catalog**
-# MAGIC 
-# MAGVamos tentar criar o catalog e ver o que acontece na free edition.
+# MAGIC
+# MAGIC # MAGVamos tentar criar o catalog e ver o que acontece na free edition.
 
 # COMMAND ----------
 
