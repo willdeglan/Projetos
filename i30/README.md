@@ -1,56 +1,144 @@
-i30
-# 🚗 Data Car Project - Pipeline de Dados Automotivo
+# Projeto de Dados Automotivos — Hyundai i30
 
-Projeto de Engenharia de Dados desenvolvido para centralizar, processar e analisar o desempenho, custos e rendimento do veículo utilizando a arquitetura medalhão no **Databricks (Free Edition)** e versionamento de dados via **GitHub**.
+Projeto de engenharia de dados para acompanhar viagens, consumo, abastecimentos e ganhos com caronas. Os arquivos CSV são mantidos no GitHub e processados no Databricks Free Edition.
 
----
+## Objetivos
 
-## 🏗️ Arquitetura do Projeto
-- **Origem:** Repositório no GitHub contendo arquivos CSV brutos.
-- **Camada Bronze:** Ingestão dos dados brutos diretamente no Databricks mantendo o formato original.
-- **Camada Silver:** Limpeza, padronização e enriquecimento dos dados.
-- **Camada Gold:** Tabelas agregadas prontas para análise e visualização de KPIs.
+- Versionar os arquivos de origem no GitHub.
+- Ler os CSVs pelo Git folder sincronizado no Databricks.
+- Persistir os dados brutos em tabelas Delta na camada Bronze.
+- Preparar camadas de tratamento e análise.
+- Criar um dashboard com indicadores de consumo, gastos e ganhos com caronas.
 
----
-
-## 📊 Tabelas Iniciais (Camada Bronze)
-
-Abaixo estão descritas as tabelas e campos iniciais que alimentam o pipeline:
-
-### 1. `registro_viagens`
-Responsável por registrar o desempenho e as métricas de cada percurso realizado.
-* **`DATA`**: Data em que a viagem foi realizada.
-* **`KM_INICIAL`**: Quilometragem do veículo no início do percurso.
-* **`KM_FINAL`**: Quilometragem do veículo ao término do percurso.
-* **`PAINEL_L_100KM`**: Consumo médio de combustível indicado no painel (Litros por 100 km).
-* **`VELOC_MEDIA_KM_H`**: Velocidade média desenvolvida durante a viagem (km/h).
-
-### 2. `registro_caronas`
-Controla o fluxo de passageiros e os ganhos financeiros obtidos com caronas.
-* **`DATA`**: Data do registro dos ganhos e passageiros.
-* **`PASSAG_MANHA`**: Quantidade de passageiros transportados no período da manhã.
-* **`GANHO_MANHA_REAIS`**: Valor financeiro arrecadado com as caronas pela manhã (R$).
-* **`PASSAG_NOITE`**: Quantidade de passageiros transportados no período da noite.
-* **`GANHO_NOITE_REAIS`**: Valor financeiro arrecadado com as caronas à noite (R$).
-
-### 3. `registro_abastecimento`
-Mapeia os custos operacionais com combustível.
-* **`DATA`**: Data em que foi realizado o abastecimento.
-* **`POSTO_PRECO_LITRO`**: Preço cobrado por litro de combustível no posto (R$/L).
-* **`POSTO_VALOR_TOTAL`**: Valor total pago no abastecimento (R$).
-
-## 📂 Estrutura do Repositório
-
-O projeto está organizado com a seguinte estrutura de diretórios:
+## Arquitetura
 
 ```text
-/
+GitHub — CSVs de origem (LND)
+        │
+        │ Sincronização do Git folder no Databricks
+        ▼
+Notebook de validação — testa leitura dos CSVs
+        │
+        ▼
+Notebook 01_bronze_ingestion
+        │
+        ▼
+Unity Catalog — tabelas Delta Bronze
+        │
+        ▼
+Silver — limpeza, tipagem e validações (próxima etapa)
+        │
+        ▼
+Gold — indicadores para análise (próxima etapa)
+        │
+        ▼
+Dashboard Databricks (próxima etapa)
+```
+
+### GitHub como origem LND
+
+Os CSVs são mantidos no repositório GitHub, na pasta `i30/datasource/`. O repositório é conectado ao Databricks por um Git folder. Após atualizar os arquivos no GitHub, sincronize o Git folder no Databricks antes de executar novamente a ingestão.
+
+O notebook lê os arquivos da cópia sincronizada no workspace. A camada Bronze persiste uma cópia dos dados em Delta.
+
+## Estrutura do projeto
+
+```text
+i30/
+├── README.md
 ├── datasource/
 │   ├── registro_viagens.csv
 │   ├── registro_caronas.csv
 │   └── registro_abastecimento.csv
 └── notebooks/
-    └── 01_bronze_ingestion.py
+    └── 01_bronze_ingestion
 ```
 
+## Fontes de dados
 
+### `registro_viagens.csv`
+
+Registros diários de quilometragem e desempenho do veículo.
+
+| Campo | Descrição |
+|---|---|
+| `DATA` | Data do registro da viagem. |
+| `INICIAL` | Quilometragem do odômetro no início do percurso, em km. |
+| `FINAL` | Quilometragem do odômetro no final do percurso, em km. |
+| `PAINEL_L_100KM` | Consumo médio indicado pelo painel, em litros por 100 km. |
+| `KM_H` | Velocidade média registrada, em km/h. |
+
+### `registro_caronas.csv`
+
+Registros de passageiros e valores recebidos com caronas.
+
+| Campo | Descrição |
+|---|---|
+| `DATA` | Data do registro das caronas. |
+| `MANHA_QTD` | Quantidade de passageiros no período da manhã. |
+| `MANHA_RS` | Valor recebido com caronas pela manhã, em reais. |
+| `NOITE_QTD` | Quantidade de passageiros no período da noite. |
+| `NOITE_RS` | Valor recebido com caronas à noite, em reais. |
+
+### `registro_abastecimento.csv`
+
+Registros dos abastecimentos e respectivos custos.
+
+| Campo | Descrição |
+|---|---|
+| `DATA` | Data do abastecimento. |
+| `R$_LITRO` | Preço por litro de combustível, em reais. |
+| `R$_TOTAL` | Valor total pago, em reais. |
+| `LITROS` | Quantidade abastecida, em litros. |
+
+## Camada Bronze — implementada
+
+O notebook `01_bronze_ingestion` lê os três CSVs sincronizados no Git folder e grava tabelas Delta no Unity Catalog:
+
+- Catálogo: `will`
+- Esquema: `i30`
+
+| Tabela Delta | Arquivo de origem |
+|---|---|
+| `will.i30.bronze_registro_viagens` | `registro_viagens.csv` |
+| `will.i30.bronze_registro_caronas` | `registro_caronas.csv` |
+| `will.i30.bronze_registro_abastecimento` | `registro_abastecimento.csv` |
+
+A ingestão mantém os campos da origem sem inferir tipos e acrescenta:
+
+- `_ingested_at`: data e hora da carga.
+- `_source_file`: nome do arquivo CSV de origem.
+
+A gravação usa `overwrite`: cada execução substitui o conteúdo das tabelas Bronze pelos dados da versão atual dos CSVs sincronizados.
+
+O notebook também pode aplicar uma descrição à tabela e comentários às colunas, explicando o significado dos dados e dos campos de ingestão.
+
+## Validação de acesso aos CSVs
+
+O notebook de validação é independente da ingestão Bronze. Sua função é somente confirmar que os CSVs do Git folder podem ser encontrados e lidos pelo Spark. Ele não grava tabelas nem depende de variáveis criadas em outro notebook.
+
+## Indicadores planejados
+
+Com os campos atuais, as próximas camadas poderão preparar indicadores como:
+
+- Quilômetros por viagem (`FINAL - INICIAL`).
+- Consumo indicado pelo painel por viagem.
+- Velocidade média por período.
+- Litros abastecidos, gasto total e preço médio por litro.
+- Passageiros e ganhos com caronas por período.
+- Resultado financeiro: ganhos com caronas menos gastos com combustível.
+- Custo estimado por quilômetro, quando os dados necessários estiverem completos.
+
+## Observações e limitações dos dados
+
+- Valores vazios não devem ser interpretados automaticamente como zero: podem indicar dados ainda não preenchidos.
+- O consumo indicado pelo painel é diferente do consumo real calculado entre abastecimentos.
+- Para calcular o consumo real entre abastecimentos, será necessário registrar a quilometragem do odômetro e indicar se o tanque foi completado em cada abastecimento.
+- Datas e valores devem ser validados e convertidos para tipos apropriados na camada Silver.
+
+## Próximas etapas
+
+1. Desenvolver a camada Silver com padronização, tipos e regras de qualidade.
+2. Definir as regras de cálculo de consumo, custos e ganhos.
+3. Criar tabelas Gold agregadas para análise.
+4. Construir um dashboard no Databricks ligado às tabelas Gold.
