@@ -13,7 +13,7 @@ Projeto de engenharia de dados para acompanhar viagens, consumo, abastecimentos 
 ## Arquitetura
 
 ```text
-GitHub — CSVs de origem (LND)
+GitHub — CSVs de origem (Landing Zone)
         │
         │ Sincronização do Git folder no Databricks
         ▼
@@ -39,7 +39,9 @@ Dashboard Databricks (próxima etapa)
 
 Os CSVs são mantidos no repositório GitHub, na pasta `i30/datasource/`. O repositório é conectado ao Databricks por um Git folder. Após atualizar os arquivos no GitHub, sincronize o Git folder no Databricks antes de executar novamente a ingestão.
 
-O notebook lê os arquivos da cópia sincronizada no workspace. A camada Bronze persiste uma cópia dos dados em Delta.
+Os Notebooks são mantidos no repositório GitHub, na pasta `i30/notebook/`. 
+
+O notebook lê os arquivos da cópia sincronizada no workspace. A camada Bronze persiste uma cópia dos dados em Delta no UnityCatalog.
 
 ## Estrutura do projeto
 
@@ -51,7 +53,11 @@ i30/
 │   ├── registro_caronas.csv
 │   └── registro_abastecimento.csv
 └── notebooks/
-    └── 01_bronze_ingestion
+    ├── 00_validacao_csv_table
+    ├── 00_dicionario_de_dados
+    ├── 01_bronze_ingestion
+    ├── 02_silver_[...]
+    └── 03_gold_[...]
 ```
 
 ## Fontes de dados
@@ -100,9 +106,9 @@ O notebook `01_bronze_ingestion` lê os três CSVs sincronizados no Git folder e
 
 | Tabela Delta | Arquivo de origem |
 |---|---|
-| `will.i30.bronze_registro_viagens` | `registro_viagens.csv` |
-| `will.i30.bronze_registro_caronas` | `registro_caronas.csv` |
-| `will.i30.bronze_registro_abastecimento` | `registro_abastecimento.csv` |
+| `will.i30.bronze_viagens` | `registro_viagens.csv` |
+| `will.i30.bronze_caronas` | `registro_caronas.csv` |
+| `will.i30.bronze_abastecimento` | `registro_abastecimento.csv` |
 
 A ingestão mantém os campos da origem sem inferir tipos e acrescenta:
 
@@ -121,11 +127,11 @@ O notebook de validação é independente da ingestão Bronze. Sua função é s
 
 Com os campos atuais, as próximas camadas poderão preparar indicadores como:
 
-- Quilômetros por viagem (`FINAL - INICIAL`).
-- Consumo indicado pelo painel por viagem.
+- Quilômetros por dia (`FINAL - INICIAL`).
+- Consumo indicado pelo painel por dia.
 - Velocidade média por período.
 - Litros abastecidos, gasto total e preço médio por litro.
-- Passageiros e ganhos com caronas por período.
+- Passageiros e ganhos com caronas por dia.
 - Resultado financeiro: ganhos com caronas menos gastos com combustível.
 - Custo estimado por quilômetro, quando os dados necessários estiverem completos.
 
